@@ -29,7 +29,7 @@ public class ElementDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_element_detail);
 
         context=this;
-        Element element = getIntent().getParcelableExtra("element");
+        Element element = (Element) getIntent().getSerializableExtra("element");
 
         if (element != null) {
             TextView tvName = findViewById(R.id.tvName);

@@ -1,5 +1,6 @@
 package zeev.fraiman.mendeleevtable;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -56,6 +57,12 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementV
         Coil.imageLoader(holder.itemView.getContext()).enqueue(request);*/
 
         new LoadImageTask(holder.ivElement).execute(element.getImageUrl());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), ElementDetailActivity.class);
+            intent.putExtra("element", element);
+            v.getContext().startActivity(intent);
+        });
     }
 
 
